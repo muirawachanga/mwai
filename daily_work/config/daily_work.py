@@ -11,7 +11,7 @@ def get_data():
             "items": [
                 {
                     "type": "doctype",
-                    "name": "Timesheets",
+                    "name": "Ceiler Working",
                     "description": _("Timesheets for daily details provision.")
                 },
                 {

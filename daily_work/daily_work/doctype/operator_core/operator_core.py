@@ -10,6 +10,7 @@ from frappe.utils import nowdate
 from frappe.model.document import Document
 
 class OperatorCore(Document):
+
 	def validate(self):
 		core = load_configuration('default_core_item')
 		core_warehouse = load_configuration('warehouse_produced_core')

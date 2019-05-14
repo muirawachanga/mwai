@@ -15,8 +15,8 @@ from erpnext.manufacturing.doctype.workstation.workstation import (check_if_with
 	WorkstationHolidayError)
 from erpnext.manufacturing.doctype.manufacturing_settings.manufacturing_settings import get_mins_between_operations
 
-class OverlapError(frappe.ValidationError): pass
-class OverProductionLoggedError(frappe.ValidationError): pass
+# class OverlapError(frappe.ValidationError): pass
+# class OverProductionLoggedError(frappe.ValidationError): pass
 
 class Timesheets(Document):
 	def onload(self):
@@ -98,12 +98,12 @@ class Timesheets(Document):
 		self.set_status()
 
 	def on_cancel(self):
-		self.update_production_order(None)
+		# self.update_production_order(None)
 		self.update_task_and_project()
 
 	def on_submit(self):
-		self.validate_mandatory_fields()
-		self.update_production_order(self.name)
+		# self.validate_mandatory_fields()
+		# self.update_production_order(self.name)
 		self.update_task_and_project()
 
 	def validate_mandatory_fields(self):
@@ -148,7 +148,7 @@ class Timesheets(Document):
 			pro.set_actual_dates()
 			pro.save()
 
-	def get_actual_timesheet_summary(self, operation_id):
+	# def get_actual_timesheet_summary(self, operation_id):
 		"""Returns 'Actual Operating Time'. """
 		return frappe.db.sql("""select
 			sum(tsd.hours*60) as mins, sum(tsd.completed_qty) as completed_qty, min(tsd.from_time) as from_time,
