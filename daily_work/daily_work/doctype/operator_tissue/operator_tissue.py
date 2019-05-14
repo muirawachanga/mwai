@@ -51,8 +51,9 @@ def transfer_material(parent, t_warehouse, waste_warehouse, core, core_qty, wast
 
 	core_removal.insert()
 	core_removal.submit()
-	waste_entry.insert()
-	waste_entry.submit()
+	if waste_qty:
+		waste_entry.insert()
+		waste_entry.submit()
 	frappe.msgprint(_('The information has been saved successfully. Thank you'))
 
 

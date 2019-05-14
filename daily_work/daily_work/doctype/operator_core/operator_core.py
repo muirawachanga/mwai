@@ -66,10 +66,12 @@ def transfer_material(parent, t_warehouse, core, core_qty, waste_item, waste_war
 						"transfer_qty": waste_qty})
 	core_entry.insert()
 	core_entry.submit()
-	core_sold.insert()
-	core_sold.submit()
-	waste_entry.insert()
-	waste_entry.submit()
+	if qty_sold:
+		core_sold.insert()
+		core_sold.submit()
+	if waste_qty:
+		waste_entry.insert()
+		waste_entry.submit()
 	frappe.msgprint(_('The information has been saved successfully. Thank you'))
 
 
